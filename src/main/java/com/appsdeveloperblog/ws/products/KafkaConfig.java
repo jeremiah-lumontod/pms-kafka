@@ -12,11 +12,12 @@ import org.springframework.kafka.config.TopicBuilder;
 import org.springframework.kafka.core.DefaultKafkaProducerFactory;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.kafka.core.ProducerFactory;
-import com.appsdeveloperblog.ws.core.ProductCreatedEvent;
+//import com.appsdeveloperblog.ws.core.ProductCreatedEvent;
 
 @Configuration
 public class KafkaConfig {
 	
+/*
 	@Value("${spring.kafka.producer.bootstrap-servers}")
 	private String bootstrapServers;
 	
@@ -70,7 +71,8 @@ public class KafkaConfig {
 	KafkaTemplate<String, ProductCreatedEvent> kafkaTemplate() {
 		return new KafkaTemplate<String, ProductCreatedEvent>(producerFactory());
 	}
-	
+*/
+
 	@Bean
 	NewTopic createTopic() {
 		return TopicBuilder.name("product-created-events-topic")
