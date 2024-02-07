@@ -46,7 +46,7 @@ public class ProductServiceImpl implements ProductService {
 		});
 
 		//this will become synchronous operation
-		//future.join();
+		future.join();
 
 		LOGGER.info("***** Returning product id");
 
