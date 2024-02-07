@@ -23,7 +23,7 @@ public class ProductServiceImpl implements ProductService {
 
 	@Override
 	public String createProduct(CreateProductRestModel productRestModel) throws Exception {
-		
+
 		String productId = UUID.randomUUID().toString();
 		
 		// TODO: Persist Product Details into database table before publishing an Event
@@ -32,6 +32,7 @@ public class ProductServiceImpl implements ProductService {
 				productRestModel.getTitle(), productRestModel.getPrice(),
 				productRestModel.getQuantity());
 
+/*
 		CompletableFuture<SendResult<String, ProductCreatedEvent>> future =
 				kafkaTemplate.send("product-created-events-topic",productId, productCreatedEvent);
 
@@ -47,6 +48,10 @@ public class ProductServiceImpl implements ProductService {
 
 		//this will become synchronous operation
 		future.join();
+*/
+
+		SendResult<String, ProductCreatedEvent> result =
+				kafkaTemplate.send("product-created-events-topic",productId, productCreatedEvent).get();
 
 		LOGGER.info("***** Returning product id");
 
